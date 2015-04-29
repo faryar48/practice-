@@ -15,6 +15,25 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  # if a == b && b == c 
+  #   :equilateral
+  # elsif a == b || a == c || b == c 
+  #   :isosceles
+  # else 
+  #   :scalene
+  # end 
+
+  raise TriangleError unless [a,b,c].each { |x|
+    x > 0
+  }
+
+  sides = [a, b, c].sort
+  if(sides[0] + sides[1] <= sides[2])
+    raise TriangleError, "Sides do not add up."
+  end
+
+  [:equilateral, :isosceles, :scalene][sides.uniq.size - 1]
+      
 end
 
 # Error class used in part 2.  No need to change this code.
